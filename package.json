@@ -1,0 +1,30 @@
+{
+  "name": "shoe_shop",
+  "version": "1.0.0",
+  "description": "fisrt-project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nmchien111/shoe_shop.git"
+  },
+  "keywords": [
+    "shoe",
+    "shop",
+    "backend",
+    "expressjs"
+  ],
+  "author": "nmchien111",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nmchien111/shoe_shop/issues"
+  },
+  "homepage": "https://github.com/nmchien111/shoe_shop#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0"
+  }
+}
