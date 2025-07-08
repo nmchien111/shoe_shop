@@ -1,15 +1,19 @@
 const express = require('express');
-const path = require('path');
+
+require('dotenv').config();
 const app = express();
+const viewEngineConfig = require('./config/viewEngine');
+const webRoutes = require('./routes/web');
 
-const port = 3000
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+const port = process.env.PORT || 8080;
+const hostname = process.env.HOST_NAME;
 
-app.get('/', (req, res) => {
-    res.render('sample.ejs');
-})
+//config
+viewEngineConfig(app);
 
-app.listen(port, () => {
-    console.log(`Example app listening on port ${"http://localhost:3000"}`);
+//route
+app.use('/', webRoutes);
+
+app.listen(port, hostname, () => {
+    console.log(`Example app listening on port http://${hostname}:${port}`);
 })
