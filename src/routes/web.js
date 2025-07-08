@@ -1,13 +1,9 @@
 const express = require('express');
-
+const { getHomePage, getFirstPage } = require('../controllers/homeController');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.send('HOME PAGE');
-})
+router.get('/', getHomePage);
 
-router.get('/first', (req, res) => {
-    res.send("f1 homepage");
-})
+router.get('/first', getFirstPage);
 
 module.exports = router;
