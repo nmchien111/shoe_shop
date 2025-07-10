@@ -1,18 +1,15 @@
 const express = require('express');
 const connection = require('../config/database');
+const { getAllUser, creatUser } = require('../services/CRUDService');
 
-const getHomePage = (req, res) => {
-    return res.render('home.ejs');
+const getHomePage = async (req, res) => {
+    const results = await getAllUser();
+    return res.render('home.ejs', { allUsers: results });
 }
 
 const createNewUser = async (req, res) => {
-    let name = req.body.name;
-    let email = req.body.email;
-    let address = req.body.address;
-
-    let [results, fields] = await connection.execute(
-        `INSERT INTO Users (name, email, address) VALUES (?, ?, ?)`, [name, email, address]
-    );
+    let { name, email, address } = req.body;
+    const results = await creatUser(name, email, address);
     res.send('Create user success!');
 }
 
@@ -24,5 +21,5 @@ const getFirstPage = (req, res) => {
     res.send("Fisrt Page")
 }
 module.exports = {
-    getHomePage, getFirstPage, createNewUser, createUserPage
+    getHomePage, getFirstPage, createNewUser, createUserPage, getAllUser, creatUser
 }
