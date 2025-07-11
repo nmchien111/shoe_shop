@@ -12,32 +12,35 @@
         <a class="active" href="/">Home</a>
         <a href="create">Create</a>
     </div>
-    <%= JSON.stringify(allUsers) %>
-        <div class="w3-container">
-            <table class="w3-table">
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Address</th>
+    <div class="w3-container">
+        <table class="w3-table">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Address</th>
+
+            </tr>
+            <% allUsers.forEach(user=> { %> <tr>
+                    <td>
+                        <%= user.id %>
+                    </td>
+                    <td>
+                        <%= user.name %>
+                    </td>
+                    <td>
+                        <%= user.email %>
+                    </td>
+                    <td>
+                        <%= user.address %>
+                    </td>
+                    <td><a href="/update/<%= user.id %>">Edit</a>
+                        <button>Delete</button>
+                    </td>
                 </tr>
-                <tr>
-                    <td>Jill</td>
-                    <td>Smith</td>
-                    <td>50</td>
-                </tr>
-                <tr>
-                    <td>Eve</td>
-                    <td>Jackson</td>
-                    <td>94</td>
-                </tr>
-                <tr>
-                    <td>Adam</td>
-                    <td>Johnson</td>
-                    <td>67</td>
-                </tr>
-            </table>
-        </div>
+                <% }) %>
+        </table>
+    </div>
 </body>
 
 </html>
